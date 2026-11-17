@@ -1,0 +1,93 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-cacao-950: #120a05;
+  --color-cacao-900: #1c0f08;
+  --color-cacao-800: #2a160b;
+  --color-cacao-700: #3d2010;
+  --color-cacao-600: #5a3219;
+
+  --color-gold-200: #f3dfa8;
+  --color-gold-300: #e8c878;
+  --color-gold-400: #d9ab4f;
+  --color-gold-500: #b88a33;
+  --color-gold-700: #7a5a1e;
+
+  --color-ember-500: #c65a1e;
+
+  --color-cream-50: #fdf9f1;
+  --color-cream-100: #f8f0e0;
+  --color-cream-200: #efe1c6;
+
+  --color-ink: #2a170c;
+  --color-ink-soft: #5b4636;
+
+  --color-whatsapp: #25d366;
+
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-cream-50 font-sans text-ink antialiased;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-gold-400;
+  }
+
+  ::selection {
+    @apply bg-gold-300 text-cacao-950;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.grain {
+  background-image: radial-gradient(ellipse 70% 60% at 70% 40%, rgb(198 90 30 / 0.28), transparent 70%),
+    radial-gradient(ellipse 50% 50% at 15% 90%, rgb(217 171 79 / 0.1), transparent 70%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
